@@ -17,7 +17,7 @@ def serve():
     user_service_pb2_grpc.add_UserServiceServicer_to_server(UserServiceServicer(), server)
     server.add_insecure_port('[::]:50051')
     server.start()
-    print("gRPC серевер запущен на порту 50051...")
+    print("gRPC сервер запущен на порту 50051...")
     server.wait_for_termination()
 
 
