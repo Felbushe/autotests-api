@@ -20,3 +20,5 @@ async def main():
     await server.wait_closed() # Ожидаем закрытия сервера (обычно он работает вечно)
 
 asyncio.run(main()) # Запускаем асинхронный код
+
+# python -m websocket_users_server - запуск сервера
