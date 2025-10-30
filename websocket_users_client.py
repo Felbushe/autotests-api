@@ -15,6 +15,3 @@ async def client():
 
 
 asyncio.run(client()) # Запускаем асинхронную функцию клиента
-
-
-
