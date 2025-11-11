@@ -16,6 +16,9 @@ from clients.users.public_users_client import CreateUserResponseDict
 
 
 class UserSchema(BaseModel):
+    """
+    Модель данных пользователя
+    """
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     email: EmailStr
     last_name: str = Field(alias="lastName")
@@ -23,6 +26,9 @@ class UserSchema(BaseModel):
     middle_name: str = Field(alias="middleName")
 
 class CreateUserRequestSchema(BaseModel):
+    """
+    Запрос на создание пользователя
+    """
     email: EmailStr
     password: str
     last_name: str = Field(alias="lastName", default="Bond")
@@ -30,6 +36,9 @@ class CreateUserRequestSchema(BaseModel):
     middle_name: str = Field(alias="middleName", default="007")
 
 class CreateUserResponseSchema(BaseModel):
+    """
+    Ответ с данными созданного пользователя
+    """
     user: UserSchema
 
 create_user_model = CreateUserRequestSchema(
