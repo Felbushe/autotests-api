@@ -11,7 +11,7 @@ public_users_client = get_public_users_client()
 create_user_request = CreateUsersRequestSchema(
     email=get_random_email(),
     password="string",
-    last_name="string",
+    last_name="string",  # Передаем аргументы в формате snake_case вместо camelCase
     first_name="string",
     middle_name="string"
 )
@@ -20,9 +20,10 @@ create_user_response = public_users_client.create_user(create_user_request)
 print('Create user data', create_user_response)
 
 # Инициализируем пользовательские данные для аутентификации
+# Используем атрибуты вместо ключей
 authentication_user = AuthenticationUserSchema(
     email=create_user_request.email,
-    password= create_user_request.password
+    password=create_user_request.password
 )
 # Инициализируем клиент PrivateUsersClient
 private_users_client = get_private_users_client(authentication_user)
@@ -30,4 +31,3 @@ private_users_client = get_private_users_client(authentication_user)
 # Используем метод get_user
 get_user_response = private_users_client.get_user(create_user_response.user.id)
 print('Get user data', get_user_response)
-

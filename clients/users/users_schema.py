@@ -27,13 +27,12 @@ class CreateUsersRequestSchema(BaseModel):
     middle_name: str = Field(alias="middleName")
 
 
-    # Добавили описание структуры ответа создания пользователя
-
 class CreateUserResponseSchema(BaseModel):
     """
     Описание структуры ответа создания пользователя.
     """
     user: UserSchema
+
 
 class UpdateUserRequestSchema(BaseModel):
     """
@@ -46,11 +45,13 @@ class UpdateUserRequestSchema(BaseModel):
     first_name: str | None = Field(alias="firstName")
     middle_name: str | None = Field(alias="middleName")
 
+
 class UpdateUserResponseSchema(BaseModel):
     """
     Описание структуры ответа обновления пользователя.
     """
     user: UserSchema
+
 
 class GetUserResponseSchema(BaseModel):
     """

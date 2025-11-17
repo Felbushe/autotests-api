@@ -1,5 +1,3 @@
-from typing import TypedDict
-
 from httpx import Response
 
 from clients.api_client import APIClient
@@ -11,6 +9,7 @@ class PrivateUsersClient(APIClient):
     """
     Клиент для работы с /api/v1/users
     """
+
     def get_user_me_api(self):
         """
         Метод получения текущего пользователя.
@@ -37,7 +36,6 @@ class PrivateUsersClient(APIClient):
         """
         return self.patch(f"/api/v1/users/{user_id}", json=request.model_dump(by_alias=True))
 
-
     def delete_user_api(self, user_id: str):
         """
         Метод удаления пользователя по идентификатору.
@@ -53,7 +51,6 @@ class PrivateUsersClient(APIClient):
         return GetUserResponseSchema.model_validate_json(response.text)
 
 
-
 # Добавляем builder для PrivateUsersClient
 def get_private_users_client(user: AuthenticationUserSchema) -> PrivateUsersClient:
     """
@@ -62,4 +59,3 @@ def get_private_users_client(user: AuthenticationUserSchema) -> PrivateUsersClie
     :return: Готовый к использованию PrivateUsersClient.
     """
     return PrivateUsersClient(client=get_private_http_client(user))
-

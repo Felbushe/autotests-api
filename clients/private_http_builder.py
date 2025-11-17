@@ -1,14 +1,14 @@
 from httpx import Client
 from pydantic import BaseModel
 
-from clients.authentication.authentication_client import get_authentication_client, LoginRequestSchema
+from clients.authentication.authentication_client import get_authentication_client
 from clients.authentication.authentication_schema import LoginRequestSchema
 
 
-
-class AuthenticationUserSchema(BaseModel): # Структура данных пользователя для авторизации
+class AuthenticationUserSchema(BaseModel):  # Структура данных пользователя для авторизации
     email: str
     password: str
+
 
 # Создаем private builder
 def get_private_http_client(user: AuthenticationUserSchema) -> Client:
